@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
+using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -28,6 +31,11 @@ namespace RomRaiderLogViewer
 
         #region Events
 
+        private void BuildGraph_Click(object sender, EventArgs e)
+        {
+            BuildGraph();
+        }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             var version = Assembly.GetExecutingAssembly().GetName().Version;
@@ -35,6 +43,8 @@ namespace RomRaiderLogViewer
 
             cmbGridType.DataSource = Enum.GetValues(typeof(SeriesChartType)).Cast<SeriesChartType>().OrderBy(x => x.ToString()).ToList();
             cmbGridType.SelectedItem = SeriesChartType.Line;
+
+            ThreadStarter(new Thread(new ThreadStart(CheckUpdate)));
         }
 
         private void Open_Click(object sender, EventArgs e)
@@ -51,11 +61,6 @@ namespace RomRaiderLogViewer
 
                 BuildGrid();
             }
-        }
-
-        private void BuildGraph_Click(object sender, EventArgs e)
-        {
-            BuildGraph();
         }
 
         #endregion Events
@@ -91,7 +96,7 @@ namespace RomRaiderLogViewer
 
                 chart.Series.Add(series);
 
-                //Graph only selected rows 
+                //Graph only selected rows
                 if (cbSelectedRowsOnly.Checked)
                 {
                     foreach (DataGridViewRow line in dataGridView1.SelectedRows)
@@ -141,6 +146,47 @@ namespace RomRaiderLogViewer
             }
 
             dataGridView1.DataSource = dataTable;
+        }
+
+        private void CheckUpdate()
+        {
+            bool checkingUpdate = true;
+            int attempts = 0;
+
+            //Check for updates with a max attempt of 3
+            while (checkingUpdate && attempts < 3)
+            {
+                try
+                {
+                    using (var webClient = new WebClient())
+                    {
+                        webClient.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2;)");
+
+                        //Get latest release data from Github
+                        var release = JsonConvert.DeserializeObject<ApiGithub>(webClient.DownloadString("https://api.github.com/repos/Crowley2012/RomRaiderLogViewer/releases/latest"));
+                        var currentVersion = new Version(Assembly.GetExecutingAssembly().GetName().Version.ToString());
+                        var latestVersion = new Version(release.tag_name);
+                        var updateAvailable = currentVersion.CompareTo(latestVersion) < 0;
+
+                        //Prompt user if there is an update
+                        if (updateAvailable && MessageBox.Show($"Download new version?\n\nCurrent Version: {currentVersion}\nLatest Version {latestVersion}", "Update Available", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
+                            System.Diagnostics.Process.Start("https://github.com/Crowley2012/RomRaiderLogViewer/releases/latest");
+
+                        checkingUpdate = false;
+                        Invoke((MethodInvoker)delegate { lblUpdate.Text = updateAvailable ? $"Update Available [{latestVersion}]" : string.Empty; });
+                    }
+                }
+                catch (WebException)
+                {
+                    attempts++;
+                }
+            }
+        }
+
+        private void ThreadStarter(Thread thread)
+        {
+            thread.IsBackground = true;
+            thread.Start();
         }
 
         #endregion Private Methods

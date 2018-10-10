@@ -48,6 +48,7 @@
             this.btnBuildGraph = new System.Windows.Forms.Button();
             this.cmbGridType = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblUpdate = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
@@ -87,6 +88,7 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblFileName,
             this.toolStripStatusLabel1,
+            this.lblUpdate,
             this.lblBuild});
             this.statusStrip1.Location = new System.Drawing.Point(0, 792);
             this.statusStrip1.Name = "statusStrip1";
@@ -102,7 +104,7 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(1375, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(1220, 17);
             this.toolStripStatusLabel1.Spring = true;
             // 
             // lblBuild
@@ -259,6 +261,12 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Graph";
             // 
+            // lblUpdate
+            // 
+            this.lblUpdate.Name = "lblUpdate";
+            this.lblUpdate.Size = new System.Drawing.Size(124, 17);
+            this.lblUpdate.Text = "Checking for update...";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -314,6 +322,7 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox cbSelectedRowsOnly;
+        private System.Windows.Forms.ToolStripStatusLabel lblUpdate;
     }
 }
 
