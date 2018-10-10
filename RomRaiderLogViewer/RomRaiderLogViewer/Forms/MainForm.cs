@@ -73,7 +73,11 @@ namespace RomRaiderLogViewer
             Enum.TryParse(cmbGridType.SelectedValue.ToString(), out SeriesChartType chartType);
 
             //Check valid columns selected to graph
-            if (chartType == SeriesChartType.ThreeLineBreak && checkedListBox.CheckedItems.Count > 1)
+            if ((chartType == SeriesChartType.ThreeLineBreak
+                || chartType == SeriesChartType.PointAndFigure
+                || chartType == SeriesChartType.Kagi
+                || chartType == SeriesChartType.Renko)
+                && checkedListBox.CheckedItems.Count > 1)
             {
                 MessageBox.Show("This chart type only accepts a single column", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
