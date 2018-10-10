@@ -1,20 +1,46 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace RomRaiderLogViewer
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        #region Public Constructors
+
+        public MainForm()
         {
             InitializeComponent();
         }
+
+        #endregion Public Constructors
+
+        #region Events
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            var version = Assembly.GetExecutingAssembly().GetName().Version;
+            lblBuild.Text = $"{version.Build}.{version.Revision}";
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new OpenFileDialog())
+            {
+                dialog.Filter = "CSV Files (*.csv)|*.csv|All Files (*.*)|*.*";
+
+                if (dialog.ShowDialog() != DialogResult.OK)
+                    return;
+
+                lblFileName.Text = dialog.SafeFileName;
+            }
+        }
+
+        #endregion Events
     }
 }
