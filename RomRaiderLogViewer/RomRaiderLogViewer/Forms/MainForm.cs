@@ -91,20 +91,16 @@ namespace RomRaiderLogViewer
 
                 chart.Series.Add(series);
 
-                foreach (var line in _lines)
+                //Graph only selected rows 
+                if (cbSelectedRowsOnly.Checked)
                 {
-                    //Get the index of the column
-                    var index = Array.FindIndex(_columns, row => row == (string)item);
-                    var split = line.Split(',');
-
-                    if (double.TryParse(split[0], out double x))
-                    {
-                        //If no data exist for column set value to 0
-                        if (index < split.Length && double.TryParse(split[index], out double y))
-                            series.Points.AddXY(x, y);
-                        else
-                            series.Points.AddXY(x, 0);
-                    }
+                    foreach (DataGridViewRow line in dataGridView1.SelectedRows)
+                        series.Points.AddXY(line.Cells[0].Value, line.Cells[item.ToString()].Value);
+                }
+                else
+                {
+                    foreach (DataGridViewRow line in dataGridView1.Rows)
+                        series.Points.AddXY(line.Cells[0].Value, line.Cells[item.ToString()].Value);
                 }
             }
 

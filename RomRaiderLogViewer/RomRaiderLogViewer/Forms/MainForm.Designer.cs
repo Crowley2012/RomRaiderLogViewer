@@ -42,6 +42,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbSelectedRowsOnly = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.checkedListBox = new System.Windows.Forms.CheckedListBox();
             this.btnBuildGraph = new System.Windows.Forms.Button();
@@ -87,7 +88,7 @@
             this.lblFileName,
             this.toolStripStatusLabel1,
             this.lblBuild});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 777);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 792);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1424, 22);
             this.statusStrip1.TabIndex = 1;
@@ -110,7 +111,7 @@
             this.lblBuild.Size = new System.Drawing.Size(34, 17);
             this.lblBuild.Text = "Build";
             // 
-            // chart1
+            // chart
             // 
             chartArea1.Name = "ChartArea1";
             this.chart.ChartAreas.Add(chartArea1);
@@ -118,8 +119,8 @@
             legend1.Name = "Legend1";
             this.chart.Legends.Add(legend1);
             this.chart.Location = new System.Drawing.Point(3, 16);
-            this.chart.Name = "chart1";
-            this.chart.Size = new System.Drawing.Size(1123, 349);
+            this.chart.Name = "chart";
+            this.chart.Size = new System.Drawing.Size(1123, 357);
             this.chart.TabIndex = 2;
             this.chart.Text = "chart1";
             // 
@@ -132,7 +133,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(1424, 375);
+            this.dataGridView1.Size = new System.Drawing.Size(1424, 382);
             this.dataGridView1.TabIndex = 3;
             // 
             // splitContainer1
@@ -149,8 +150,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1424, 753);
-            this.splitContainer1.SplitterDistance = 375;
+            this.splitContainer1.Size = new System.Drawing.Size(1424, 768);
+            this.splitContainer1.SplitterDistance = 382;
             this.splitContainer1.TabIndex = 4;
             // 
             // splitContainer2
@@ -166,7 +167,7 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer2.Size = new System.Drawing.Size(1424, 374);
+            this.splitContainer2.Size = new System.Drawing.Size(1424, 382);
             this.splitContainer2.SplitterDistance = 285;
             this.splitContainer2.TabIndex = 5;
             // 
@@ -175,15 +176,27 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.cbSelectedRowsOnly);
             this.groupBox1.Controls.Add(this.tableLayoutPanel2);
             this.groupBox1.Controls.Add(this.btnBuildGraph);
             this.groupBox1.Controls.Add(this.cmbGridType);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(279, 368);
+            this.groupBox1.Size = new System.Drawing.Size(279, 376);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Graph Settings";
+            // 
+            // cbSelectedRowsOnly
+            // 
+            this.cbSelectedRowsOnly.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cbSelectedRowsOnly.AutoSize = true;
+            this.cbSelectedRowsOnly.Location = new System.Drawing.Point(12, 324);
+            this.cbSelectedRowsOnly.Name = "cbSelectedRowsOnly";
+            this.cbSelectedRowsOnly.Size = new System.Drawing.Size(122, 17);
+            this.cbSelectedRowsOnly.TabIndex = 4;
+            this.cbSelectedRowsOnly.Text = "Selected Rows Only";
+            this.cbSelectedRowsOnly.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
             // 
@@ -197,16 +210,16 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(264, 287);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(264, 272);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
-            // checkedListBox1
+            // checkedListBox
             // 
             this.checkedListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checkedListBox.FormattingEnabled = true;
             this.checkedListBox.Location = new System.Drawing.Point(3, 3);
-            this.checkedListBox.Name = "checkedListBox1";
-            this.checkedListBox.Size = new System.Drawing.Size(258, 281);
+            this.checkedListBox.Name = "checkedListBox";
+            this.checkedListBox.Size = new System.Drawing.Size(258, 266);
             this.checkedListBox.Sorted = true;
             this.checkedListBox.TabIndex = 2;
             // 
@@ -214,7 +227,7 @@
             // 
             this.btnBuildGraph.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBuildGraph.Location = new System.Drawing.Point(9, 339);
+            this.btnBuildGraph.Location = new System.Drawing.Point(9, 347);
             this.btnBuildGraph.Name = "btnBuildGraph";
             this.btnBuildGraph.Size = new System.Drawing.Size(264, 23);
             this.btnBuildGraph.TabIndex = 1;
@@ -241,7 +254,7 @@
             this.groupBox2.Controls.Add(this.chart);
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1129, 368);
+            this.groupBox2.Size = new System.Drawing.Size(1129, 376);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Graph";
@@ -250,7 +263,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1424, 799);
+            this.ClientSize = new System.Drawing.Size(1424, 814);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -274,6 +287,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -299,6 +313,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox cbSelectedRowsOnly;
     }
 }
 
