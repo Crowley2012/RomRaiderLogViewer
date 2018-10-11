@@ -33,6 +33,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.btnOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblFileName = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -53,7 +54,6 @@
             this.btnBuildGraph = new System.Windows.Forms.Button();
             this.cmbGridType = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
@@ -88,6 +88,13 @@
             this.btnOpen.Size = new System.Drawing.Size(48, 20);
             this.btnOpen.Text = "Open";
             this.btnOpen.Click += new System.EventHandler(this.Open_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.About_Click);
             // 
             // statusStrip1
             // 
@@ -209,9 +216,9 @@
             // 
             this.btnExportGraph.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExportGraph.Location = new System.Drawing.Point(9, 352);
+            this.btnExportGraph.Location = new System.Drawing.Point(12, 352);
             this.btnExportGraph.Name = "btnExportGraph";
-            this.btnExportGraph.Size = new System.Drawing.Size(264, 23);
+            this.btnExportGraph.Size = new System.Drawing.Size(258, 23);
             this.btnExportGraph.TabIndex = 8;
             this.btnExportGraph.Text = "Export Graph";
             this.btnExportGraph.UseVisualStyleBackColor = true;
@@ -243,7 +250,7 @@
             this.cmbAxisX.FormattingEnabled = true;
             this.cmbAxisX.Location = new System.Drawing.Point(51, 46);
             this.cmbAxisX.Name = "cmbAxisX";
-            this.cmbAxisX.Size = new System.Drawing.Size(222, 21);
+            this.cmbAxisX.Size = new System.Drawing.Size(219, 21);
             this.cmbAxisX.Sorted = true;
             this.cmbAxisX.TabIndex = 5;
             // 
@@ -287,9 +294,9 @@
             // 
             this.btnBuildGraph.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBuildGraph.Location = new System.Drawing.Point(9, 323);
+            this.btnBuildGraph.Location = new System.Drawing.Point(12, 323);
             this.btnBuildGraph.Name = "btnBuildGraph";
-            this.btnBuildGraph.Size = new System.Drawing.Size(264, 23);
+            this.btnBuildGraph.Size = new System.Drawing.Size(258, 23);
             this.btnBuildGraph.TabIndex = 1;
             this.btnBuildGraph.Text = "Build Graph";
             this.btnBuildGraph.UseVisualStyleBackColor = true;
@@ -303,7 +310,7 @@
             this.cmbGridType.FormattingEnabled = true;
             this.cmbGridType.Location = new System.Drawing.Point(51, 19);
             this.cmbGridType.Name = "cmbGridType";
-            this.cmbGridType.Size = new System.Drawing.Size(222, 21);
+            this.cmbGridType.Size = new System.Drawing.Size(219, 21);
             this.cmbGridType.TabIndex = 0;
             // 
             // groupBox2
@@ -318,13 +325,6 @@
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Graph";
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.About_Click);
             // 
             // MainForm
             // 

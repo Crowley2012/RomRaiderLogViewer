@@ -25,7 +25,7 @@ namespace RomRaiderLogViewer
 
         private void PopupAbout_Load(object sender, EventArgs e)
         {
-            txtVersion.Text = $"Version: {Assembly.GetExecutingAssembly().GetName().Version.ToString()}";
+            txtVersion.Text = $"Version: {Assembly.GetExecutingAssembly().GetName().Version}";
         }
 
         #endregion Events
