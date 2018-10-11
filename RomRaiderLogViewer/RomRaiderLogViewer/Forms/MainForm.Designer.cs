@@ -36,6 +36,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblFileName = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblUpdate = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblBuild = new System.Windows.Forms.ToolStripStatusLabel();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -48,7 +49,6 @@
             this.btnBuildGraph = new System.Windows.Forms.Button();
             this.cmbGridType = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lblUpdate = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
@@ -104,8 +104,14 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(1220, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(1251, 17);
             this.toolStripStatusLabel1.Spring = true;
+            // 
+            // lblUpdate
+            // 
+            this.lblUpdate.Name = "lblUpdate";
+            this.lblUpdate.Size = new System.Drawing.Size(124, 17);
+            this.lblUpdate.Text = "Checking for update...";
             // 
             // lblBuild
             // 
@@ -135,8 +141,10 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1424, 382);
             this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // splitContainer1
             // 
@@ -260,12 +268,6 @@
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Graph";
-            // 
-            // lblUpdate
-            // 
-            this.lblUpdate.Name = "lblUpdate";
-            this.lblUpdate.Size = new System.Drawing.Size(124, 17);
-            this.lblUpdate.Text = "Checking for update...";
             // 
             // MainForm
             // 

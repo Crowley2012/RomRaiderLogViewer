@@ -27,6 +27,16 @@ namespace RomRaiderLogViewer
             InitializeComponent();
         }
 
+        public MainForm(string path)
+        {
+            InitializeComponent();
+
+            lblFileName.Text = Path.GetFileName(path);
+            _lines = File.ReadAllLines(path);
+
+            BuildGrid();
+        }
+
         #endregion Public Constructors
 
         #region Events
@@ -194,5 +204,9 @@ namespace RomRaiderLogViewer
         }
 
         #endregion Private Methods
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+        }
     }
 }
