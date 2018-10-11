@@ -204,9 +204,5 @@ namespace RomRaiderLogViewer
         }
 
         #endregion Private Methods
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
     }
 }
