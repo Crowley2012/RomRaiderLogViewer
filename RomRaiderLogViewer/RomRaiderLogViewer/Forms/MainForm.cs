@@ -87,6 +87,12 @@ namespace RomRaiderLogViewer
             }
         }
 
+        private void About_Click(object sender, EventArgs e)
+        {
+            using (FrmAbout form = new FrmAbout())
+                form.ShowDialog();
+        }
+
         #endregion Events
 
         #region Private Methods
