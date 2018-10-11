@@ -9,6 +9,7 @@ namespace RomRaiderLogViewer
         public string upload_url { get; set; }
         public string html_url { get; set; }
         public int id { get; set; }
+        public string node_id { get; set; }
         public string tag_name { get; set; }
         public string target_commitish { get; set; }
         public string name { get; set; }
@@ -27,6 +28,7 @@ namespace RomRaiderLogViewer
     {
         public string login { get; set; }
         public int id { get; set; }
+        public string node_id { get; set; }
         public string avatar_url { get; set; }
         public string gravatar_id { get; set; }
         public string url { get; set; }
@@ -48,6 +50,7 @@ namespace RomRaiderLogViewer
     {
         public string url { get; set; }
         public int id { get; set; }
+        public string node_id { get; set; }
         public string name { get; set; }
         public object label { get; set; }
         public Uploader uploader { get; set; }
@@ -64,6 +67,7 @@ namespace RomRaiderLogViewer
     {
         public string login { get; set; }
         public int id { get; set; }
+        public string node_id { get; set; }
         public string avatar_url { get; set; }
         public string gravatar_id { get; set; }
         public string url { get; set; }

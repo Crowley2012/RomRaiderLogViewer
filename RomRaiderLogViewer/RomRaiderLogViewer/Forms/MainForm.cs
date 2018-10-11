@@ -46,6 +46,20 @@ namespace RomRaiderLogViewer
             BuildGraph();
         }
 
+        private void ExportGraph_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog savefile = new SaveFileDialog
+            {
+                FileName = "graph.png",
+                Filter = "PNG files (*.png)|*.png|All files (*.*)|*.*"
+            };
+
+            if (savefile.ShowDialog() == DialogResult.OK)
+            {
+                chart.SaveImage(savefile.FileName, ChartImageFormat.Png);
+            }
+        }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             var version = Assembly.GetExecutingAssembly().GetName().Version;
@@ -113,13 +127,13 @@ namespace RomRaiderLogViewer
                 //Graph only selected rows
                 if (cbSelectedRowsOnly.Checked)
                 {
-                    foreach (DataGridViewRow line in dataGridView1.SelectedRows)
-                        series.Points.AddXY(line.Cells[0].Value, line.Cells[item.ToString()].Value);
+                    foreach (DataGridViewRow line in dataGrid.SelectedRows)
+                        series.Points.AddXY(line.Cells[cmbAxisX.SelectedItem.ToString()].Value, line.Cells[item.ToString()].Value);
                 }
                 else
                 {
-                    foreach (DataGridViewRow line in dataGridView1.Rows)
-                        series.Points.AddXY(line.Cells[0].Value, line.Cells[item.ToString()].Value);
+                    foreach (DataGridViewRow line in dataGrid.Rows)
+                        series.Points.AddXY(line.Cells[cmbAxisX.SelectedItem.ToString()].Value, line.Cells[item.ToString()].Value);
                 }
             }
 
@@ -133,6 +147,7 @@ namespace RomRaiderLogViewer
 
             //Clear check list
             checkedListBox.Items.Clear();
+            cmbAxisX.Items.Clear();
 
             //Check all lines to find which row has the most columns
             foreach (var line in _lines)
@@ -148,6 +163,7 @@ namespace RomRaiderLogViewer
             {
                 dataTable.Columns.Add(column);
                 checkedListBox.Items.Add(column);
+                cmbAxisX.Items.Add(column);
             }
 
             //Add rows
@@ -159,7 +175,8 @@ namespace RomRaiderLogViewer
                     dataTable.Rows.Add(split);
             }
 
-            dataGridView1.DataSource = dataTable;
+            dataGrid.DataSource = dataTable;
+            cmbAxisX.SelectedItem = dataGrid.Columns[0].HeaderText;
         }
 
         private void CheckUpdate()
@@ -174,6 +191,8 @@ namespace RomRaiderLogViewer
                 {
                     using (var webClient = new WebClient())
                     {
+                        ServicePointManager.Expect100Continue = true;
+                        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                         webClient.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2;)");
 
                         //Get latest release data from Github
